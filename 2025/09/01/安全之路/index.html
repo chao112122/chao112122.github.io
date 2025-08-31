@@ -1,0 +1,228 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>安全之路 | Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher,APT Threat Hunting Expert</title><meta name="author" content="cc"><meta name="copyright" content="cc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="安全之路在上大学前没用过电脑 对电脑一窍不通 连开机都不会 鬼知道我这一年经历了什么 大一国庆的时候才买了人生第一个笔记本 刚到手的时候连开机都踉跄 不过如今已经很熟练  大一上 军训完就开始琢磨我的个人选择 毕竟计算机有很多个方向 大部分能接触最多的就是码代码 我花了半个月去学了html和css 发现这和我想象的计算机不一样 我觉得很无聊 所以开始研究计算机的各个方向 比如 软件开发 网络工程">
+<meta property="og:type" content="article">
+<meta property="og:title" content="安全之路">
+<meta property="og:url" content="http://example.com/2025/09/01/%E5%AE%89%E5%85%A8%E4%B9%8B%E8%B7%AF/index.html">
+<meta property="og:site_name" content="Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher,APT Threat Hunting Expert">
+<meta property="og:description" content="安全之路在上大学前没用过电脑 对电脑一窍不通 连开机都不会 鬼知道我这一年经历了什么 大一国庆的时候才买了人生第一个笔记本 刚到手的时候连开机都踉跄 不过如今已经很熟练  大一上 军训完就开始琢磨我的个人选择 毕竟计算机有很多个方向 大部分能接触最多的就是码代码 我花了半个月去学了html和css 发现这和我想象的计算机不一样 我觉得很无聊 所以开始研究计算机的各个方向 比如 软件开发 网络工程">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/123.png">
+<meta property="article:published_time" content="2025-08-31T17:41:56.560Z">
+<meta property="article:modified_time" content="2025-08-31T17:43:20.786Z">
+<meta property="article:author" content="cc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/123.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "安全之路",
+  "url": "http://example.com/2025/09/01/%E5%AE%89%E5%85%A8%E4%B9%8B%E8%B7%AF/",
+  "image": "http://example.com/img/123.png",
+  "datePublished": "2025-08-31T17:41:56.560Z",
+  "dateModified": "2025-08-31T17:43:20.786Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "cc",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/123.png"><link rel="canonical" href="http://example.com/2025/09/01/%E5%AE%89%E5%85%A8%E4%B9%8B%E8%B7%AF/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      const activateDarkMode = () => {
+        document.documentElement.setAttribute('data-theme', 'dark')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#0d0d0d')
+        }
+      }
+      const activateLightMode = () => {
+        document.documentElement.setAttribute('data-theme', 'light')
+        if (document.querySelector('meta[name="theme-color"]') !== null) {
+          document.querySelector('meta[name="theme-color"]').setAttribute('content', '#ffffff')
+        }
+      }
+
+      btf.activateDarkMode = activateDarkMode
+      btf.activateLightMode = activateLightMode
+
+      const theme = saveToLocal.get('theme')
+    
+          theme === 'dark' ? activateDarkMode() : theme === 'light' ? activateLightMode() : null
+        
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: '安全之路',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher,APT Threat Hunting Expert</span></a><a class="nav-page-title" href="/"><span class="site-name">安全之路</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"></div></nav><div id="post-info"><h1 class="post-title">安全之路<a class="post-edit-link" href="https://github.com/chao112122_posts/安全之路.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-08-31T17:41:56.560Z" title="发表于 2025-09-01 01:41:56">2025-09-01</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-08-31T17:43:20.786Z" title="更新于 2025-09-01 01:43:20">2025-09-01</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="安全之路"><a href="#安全之路" class="headerlink" title="安全之路"></a>安全之路</h1><p>在上大学前没用过电脑 对电脑一窍不通 连开机都不会 鬼知道我这一年经历了什么 大一国庆的时候才买了人生第一个笔记本 刚到手的时候连开机都踉跄 不过如今已经很熟练</p>
+<p><img src="https://picx.zhimg.com/80/v2-c04e73fe74b94c48214896700860fa38_720w.webp?source=c8b7c179" alt="img"></p>
+<p>大一上 军训完就开始琢磨我的个人选择 毕竟计算机有很多个方向 大部分能接触最多的就是码代码 我花了半个月去学了html和css 发现这和我想象的计算机不一样 我觉得很无聊 所以开始研究计算机的各个方向 比如 软件开发 网络工程 嵌入式 算法 等</p>
+<p>软件开发(纯码代码太无聊了)</p>
+<p>网络工程(装网线的 纯xx专业 不要问我为什么)</p>
+<p>嵌入式(当时听说要物理好 遂放弃)</p>
+<p>算法(一堆刁钻的数学问题 我懒)</p>
+<p><img src="https://pic1.zhimg.com/80/v2-fa0674a3c5e3743d2280b584baa9bc93_720w.webp?source=c8b7c179" alt="img"></p>
+<p>我的专业是网络工程 我更喜欢调侃成给别人装网线的 事实上也确定有装网线的 我不喜欢这么专业 大一的课程都是<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=%E6%80%9D%E7%A7%91&zhida_source=entity">思科</a>华为网络配置什么的 极其无聊 以至于我差点就挂科 是真的无聊 现在还在后悔当时应该趁早转的 因为每当期末都要花时间去学 纯纯浪费我的时间</p>
+<p><img src="https://picx.zhimg.com/80/v2-0ef7e4815f39b60d760c576e282e4339_720w.webp?source=c8b7c179" alt="img"></p>
+<p>我极其讨厌算法 其实更多讨厌的是各种刁钻的数学问题 什么时间复杂度 最优算法 看得我脑壳痛 至于为什么当时没选择嵌入式是因为听别人说要对电路什么的了解 我物理极差 遂放弃 最后选择的是网络安全 一开始被吸引是因为黑客两个字 帅 入行后才发现很无聊</p>
+<p>以上所说其实只是在大一国庆的时候 也就是说我大一开学一个月后就找到了自己喜欢的方向(其实没那么喜欢)</p>
+<h2 id="以下是我的安全学习经历"><a href="#以下是我的安全学习经历" class="headerlink" title="以下是我的安全学习经历"></a>以下是我的安全学习经历</h2><p>大一上</p>
+<p>11-1月</p>
+<p>我把html css js 都完了 紧接着把b站上那个计算机入门科普视频看完(这里很推荐入门看这个 很有用) 接着就开始真正学习安全 常见的漏洞 例如sql注入 rce命令执行 我一开始选择搭建了<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=dvwa&zhida_source=entity">dvwa</a> 因为学习sql注入我就跑去学了sql 那时候因为不是很懂电脑 每天最多浪费的时候就是搭建各种环境 记得第一次搭建靶场时我连续坐在电脑前疯狂google问题 那时候还不知道gpt的存在 很多资料甚至是国外的 只能硬着头皮看</p>
+<p>1-3月</p>
+<p>打完dvwa后就开始对安全有了一定的了解 后面又开始看小迪的视频 两倍速连续十来天直接看完了 后开始搭建靶场vuluhub 开始有了正规的训练 让我对整个渗透流程有了很强的认识 直接把小迪看得东西消化了 从信息收集 web渗透 内网渗透 提权 因为需要内网渗透 我又学了linux 编写shell脚本 后为了方便安装了<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=kali&zhida_source=entity">kali</a> 为了更完善的工具集 那段时间 每天两眼一睁就是打靶场 这是我进步神速的时候 我并没有很好的基础 所以那个时候就是照着wp打 不懂就上外网看资料 那是我最痛苦的时候 因为啥也不懂 基础也没打好 直接上手 跟不带枪上战场没啥区别 不过还是硬着头皮啃下来了 鬼知道我是怎么坚持下来的</p>
+<p>3-5月</p>
+<p>开始发现自己的code能力太弱 于是觉得学点开发 当然不是软件工程那种 而是囫囵吞枣的过了一遍 php shell python c</p>
+<p>开始接触ctf 一开始打的是网上的一些ctf平台 说实话很乱 不够系统 后面开始在<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=ctfshow&zhida_source=entity">ctfshow</a>有规模的打 打了两个月赶紧溜 具体原因说来话长 当然这是我做的非常对的一个选择 而后转行去挖src 挖了一个星期获得人生第一个漏洞(虽然是公益) 而后在一个星期内挖了一堆漏洞</p>
+<p>5-7月</p>
+<p>开始打<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=hackthebox&zhida_source=entity">hackthebox</a>和<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=tryhackme&zhida_source=entity">tryhackme</a>(极其推荐) 他和前面说的<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=vulnhub&zhida_source=entity">vulnhub</a>一样 但是htb更难 打了两个月后水平神速提升 对整个渗透流程有了很深刻的理解 后又刷了小迪和暗月的视频 主要是巩固 到这里其实我个人觉得基本算入行了</p>
+<p>7-8月</p>
+<p>开始研究代码审计 主要是java安全。因为之前打ctf经常练php反序列化 也有了一定的基础 开始打java安全的靶场和审计靶场的代码。但是因为没有开发经验很难受 遂放弃</p>
+<p>8-9月</p>
+<p>开始学习免杀技术 在选择语言的时候做了很多的纠结 主要的用来免杀的语言有python go rust c cpp ps1脚本 最后选择了cpp 因为万金油 代码审计一样 因为没有开发能力和对操作系统内核的了解 遂 寄</p>
+<p>9-10月</p>
+<p>决定硬磕代码审计 主要我真不想学开发 后面还是克服了 跟着文章分析cc1-cc10的链子 以及一些著名框架漏洞什么的 <a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=log4j&zhida_source=entity">log4j</a> <a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=weblogic&zhida_source=entity">weblogic</a> <a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=springboot&zhida_source=entity">springboot</a>等 code能力弱真的寸步难行</p>
+<p>10-11月</p>
+<p>因为有师傅说需要对安卓小程序攻防了解 所以开始学习安卓逆向 当然只是很简单的部分 例如hook 工具脱壳反编译 反hook抓包 分析函数 逆向一些数据包字段等 同时学了一点点js逆向 主要是逆下登录算法</p>
+<p>11-12月</p>
+<p>开始学习一些简易的win逆向 一开始是因为觉得能破解东西什么的很帅 后面才发现有多坐牢 而且学习东西一堆 我跟的是海哥的基础课和中级班(强烈推荐) 逆向这部分其实很水 但主要我不是专门搞逆向的 倒也无所谓 主要对了操作系统已经内核有了很好的见解 什么时候才能啃懂<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=csapp&zhida_source=entity">csapp</a>(*꒦ິ⌓꒦ີ)</p>
+<p>1月-2月</p>
+<p>开始着手之前放弃的免杀 有了之前学逆向看的操作系统 <a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=pe%E7%BB%93%E6%9E%84&zhida_source=entity">pe结构</a> 以及内核 基本算是轻车熟路 花了一周的时候就成功绕过了主流的杀软 包括卡巴 某60和某绒和defender 第一次绕过某60的时候给我激动坏了 因为之前听说国内某60很强 下面的图是<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=vt&zhida_source=entity">vt</a>的 没全过(猎鹰真的强)</p>
+<p><img src="https://picx.zhimg.com/80/v2-df6f7139f75cd6928578127c3bae8d70_720w.webp?source=c8b7c179" alt="img"></p>
+<p>实际的经历比这复杂很多 只是打字好累不想打了(呜呜呜X﹏X)</p>
+<p>这辈子最幸运的是我在新手入学后一个月就找到自己的方向 并且我本身也算喜欢(可能)</p>
+<p>2.19二更</p>
+<p>如果对安全真的有兴趣 建议先学半年开发先 后续可以做安全研究或者安全开发 以前不懂这个 后面才发现就算再强 也只是个水平高一点的工具侠 实际目前安全圈几乎全是这样的人 如果你只是想当个安服 那倒是无所谓 如果真的想成为红队 就不能只是局限于web渗透</p>
+<p>其实英语对于安全真的很重要 我目前还是上大二 我对自己的要求是毕业前词汇量达到8k以上 当你水平一直在提高 实际后面都是在阅读纯英文章(老外技术是真的强) 一定要学会纯英阅读 这个是真的很重要</p>
+<p>最近都在疯狂卷开发 感觉都可以直接应聘开发了 气死我了</p>
+<p>2月-3月</p>
+<p>继续卷开发 学了点go 目前代码审计的go项目越来越多了 最近开始着手web3安全 了解了一些web3基本知识 现在在学sol开发</p>
+<p>最近好累 学安全真的巨多知识</p>
+<p>web渗透</p>
+<p>内网渗透</p>
+<p>域安全</p>
+<p>代码审计</p>
+<p>免杀</p>
+<p>安卓小程序攻防</p>
+<p>js逆向</p>
+<p>云安全</p>
+<p>这上面随便一个拿出来都够累了 工资又比不过开发 真心劝退不是热爱赶紧转行</p>
+<p>最近在学点web3安全 了解了一些sol编程。<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=hardcat&zhida_source=entity">hardcat</a>和<a target="_blank" rel="noopener" href="https://zhida.zhihu.com/search?content_id=711164460&content_type=Answer&match_order=1&q=foundry%E6%A1%86%E6%9E%B6&zhida_source=entity">foundry框架</a>和top10web3漏洞</p>
+<hr>
+<p>最近</p>
+<p>web3暂时放下了 知识量太大了 影响我的web2安全 估摸着等毕业再开始着手</p>
+<p>这段时间都在学习开发 学学代码审计 主要是go java php以及几个框架tp springboot gin等 也算了挖到一些比较水的0day漏洞 虽然都没啥用</p>
+<p>最近开发能力提升了不少 于是想到刚好会点免杀 于是索性二开了fscan 说实话听水的 不过最后还是过了数字某绒</p>
+<p>还研究了一点点勒索 主要是文件加密这块 感觉还是需要免杀功底 这几天在研究二开webshell工具 主要是哥斯拉和冰蝎</p>
+<p>-–</p>
+<p>续更</p>
+<p>这段时间水了几个cve 二开了几个安全工具 fscan和哥斯拉 目前在二开mimikatz 总的来说还是符合预期 不过要达到专业的redteam 仍还有很长的路去走 接触的英语资料越来越多 也需要考虑提升下英语水平了 后面估计会考个雅思</p>
+<p>5月-8月</p>
+<p>这段时间是我进步飞速的时间 因为打好了很多基础 最近都是在做安全研究 7月入职了国内某安全厂 上个月研究了上百份病毒样本 逆向分析的能力大大提升 也写到了很多恶意开发的知识！</p>
+<p>最近在尝试写一个c2？嗯 不是开发出生确实很难 但也是为了做出一个项目 毕竟市面上成熟的产品太多了 主要是理解一下c2的整个架构！</p>
+<p>后面9月还要回去上学！从社畜再次转向学生</p>
+</article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">cc</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/09/01/%E5%AE%89%E5%85%A8%E4%B9%8B%E8%B7%AF/">http://example.com/2025/09/01/%E5%AE%89%E5%85%A8%E4%B9%8B%E8%B7%AF/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher,APT Threat Hunting Expert</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/123.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/09/01/c2/" title="c2结构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">c2结构</div></div><div class="info-2"><div class="info-item-1">关于c2结构下图为现代c2的框架结构 基本的三端结构 在特殊情况下通过域中转可达到四端 hacker-&gt;cloud-&gt;server-&gt;beacon 现代c2多为多会话设计 例如cs 允许多个人操作一个beacon在不同主机 将beacon的会话存储到一个指定服务器通过登入同一服务器可实现多人协助 打破像msf这种单体c2  下图为我个人开发的c2 仍然是单体的c2   server-&gt;beacon hacker在server保存命令给会话 beacon定期睡眠时间主动轮询检查命令队列  如为普通命令就执行保存结果发送给server端 如为模块功能 例如dump lsass就调用beacon写好的功能模块  下面是c2目前实现的功能 123456789101112131415161718192021[+]输入格式: &lt;beacon_id&gt; &lt;command&gt;[+]命令:  sessions                              - 显示所有beacon  print_api                     ...</div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/123.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">cc</div><div class="author-info-description">redteam</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">4</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/chao112122"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">This is my Blog</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#%E5%AE%89%E5%85%A8%E4%B9%8B%E8%B7%AF"><span class="toc-number">1.</span> <span class="toc-text">安全之路</span></a><ol class="toc-child"><li class="toc-item toc-level-2"><a class="toc-link" href="#%E4%BB%A5%E4%B8%8B%E6%98%AF%E6%88%91%E7%9A%84%E5%AE%89%E5%85%A8%E5%AD%A6%E4%B9%A0%E7%BB%8F%E5%8E%86"><span class="toc-number">1.1.</span> <span class="toc-text">以下是我的安全学习经历</span></a></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/01/%E5%AE%89%E5%85%A8%E4%B9%8B%E8%B7%AF/" title="安全之路">安全之路</a><time datetime="2025-08-31T17:41:56.560Z" title="发表于 2025-09-01 01:41:56">2025-09-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/01/c2/" title="c2结构">c2结构</a><time datetime="2025-08-31T16:56:50.091Z" title="发表于 2025-09-01 00:56:50">2025-09-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/01/bof%E5%8A%9F%E8%83%BD/" title="c2开发-bof功能">c2开发-bof功能</a><time datetime="2025-08-31T16:32:48.108Z" title="发表于 2025-09-01 00:32:48">2025-09-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/08/29/c2%E7%A0%94%E7%A9%B6/" title="关于c2开发研究">关于c2开发研究</a><time datetime="2025-08-29T12:58:25.929Z" title="发表于 2025-08-29 20:58:25">2025-08-29</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By cc</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="darkmode" type="button" title="日间和夜间模式切换"><i class="fas fa-adjust"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
