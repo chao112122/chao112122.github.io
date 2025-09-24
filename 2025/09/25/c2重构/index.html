@@ -1,0 +1,308 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>EDR强对抗环境下与现代APT组织攻击手法 | Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher,APT Threat Hunting Expert</title><meta name="author" content="cc"><meta name="copyright" content="cc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="EDR强对抗环境下与现代APT组织趋势为什么现代EDR对抗与APT攻击趋向自写C2框架1.引言：C2框架在现代攻击中的核心作用** C2框架概述： Command and Control（C2）框架是攻击者与目标系统之间进行命令传递和数据回传的核心工具。 在渗透测试、红队演习以及APT攻击中，C2框架承担着控制远程主机、获取敏感信息等关键任务。   为何选择自写C2框架： 自写C2框架相比传统的公">
+<meta property="og:type" content="article">
+<meta property="og:title" content="EDR强对抗环境下与现代APT组织攻击手法">
+<meta property="og:url" content="http://example.com/2025/09/25/c2%E9%87%8D%E6%9E%84/index.html">
+<meta property="og:site_name" content="Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher,APT Threat Hunting Expert">
+<meta property="og:description" content="EDR强对抗环境下与现代APT组织趋势为什么现代EDR对抗与APT攻击趋向自写C2框架1.引言：C2框架在现代攻击中的核心作用** C2框架概述： Command and Control（C2）框架是攻击者与目标系统之间进行命令传递和数据回传的核心工具。 在渗透测试、红队演习以及APT攻击中，C2框架承担着控制远程主机、获取敏感信息等关键任务。   为何选择自写C2框架： 自写C2框架相比传统的公">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="http://example.com/img/123.png">
+<meta property="article:published_time" content="2025-09-24T21:06:47.386Z">
+<meta property="article:modified_time" content="2025-09-24T22:07:17.447Z">
+<meta property="article:author" content="cc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="http://example.com/img/123.png"><script type="application/ld+json">{
+  "@context": "https://schema.org",
+  "@type": "BlogPosting",
+  "headline": "EDR强对抗环境下与现代APT组织攻击手法",
+  "url": "http://example.com/2025/09/25/c2%E9%87%8D%E6%9E%84/",
+  "image": "http://example.com/img/123.png",
+  "datePublished": "2025-09-24T21:06:47.386Z",
+  "dateModified": "2025-09-24T22:07:17.447Z",
+  "author": [
+    {
+      "@type": "Person",
+      "name": "cc",
+      "url": "http://example.com"
+    }
+  ]
+}</script><link rel="shortcut icon" href="/img/123.png"><link rel="canonical" href="http://example.com/2025/09/25/c2%E9%87%8D%E6%9E%84/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'EDR强对抗环境下与现代APT组织攻击手法',
+  isHighlightShrink: false,
+  isToc: true,
+  pageType: 'post'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/123.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="post" id="body-wrap"><header class="post-bg" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher,APT Threat Hunting Expert</span></a><a class="nav-page-title" href="/"><span class="site-name">EDR强对抗环境下与现代APT组织攻击手法</span><span class="site-name"><i class="fa-solid fa-circle-arrow-left"></i><span>  返回首页</span></span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="post-info"><h1 class="post-title">EDR强对抗环境下与现代APT组织攻击手法<a class="post-edit-link" href="https://github.com/chao112122_posts/c2重构.md" title="编辑" target="_blank"><i class="fas fa-pencil-alt"></i></a></h1><div id="post-meta"><div class="meta-firstline"><span class="post-meta-date"><i class="far fa-calendar-alt fa-fw post-meta-icon"></i><span class="post-meta-label">发表于</span><time class="post-meta-date-created" datetime="2025-09-24T21:06:47.386Z" title="发表于 2025-09-25 05:06:47">2025-09-25</time><span class="post-meta-separator">|</span><i class="fas fa-history fa-fw post-meta-icon"></i><span class="post-meta-label">更新于</span><time class="post-meta-date-updated" datetime="2025-09-24T22:07:17.447Z" title="更新于 2025-09-25 06:07:17">2025-09-25</time></span></div><div class="meta-secondline"><span class="post-meta-separator">|</span><span class="post-meta-pv-cv" id="" data-flag-title=""><i class="far fa-eye fa-fw post-meta-icon"></i><span class="post-meta-label">浏览量:</span><span id="busuanzi_value_page_pv"><i class="fa-solid fa-spinner fa-spin"></i></span></span></div></div></div></header><main class="layout" id="content-inner"><div id="post"><article class="container post-content" id="article-container"><h1 id="EDR强对抗环境下与现代APT组织趋势"><a href="#EDR强对抗环境下与现代APT组织趋势" class="headerlink" title="EDR强对抗环境下与现代APT组织趋势"></a>EDR强对抗环境下与现代APT组织趋势</h1><h3 id="为什么现代EDR对抗与APT攻击趋向自写C2框架"><a href="#为什么现代EDR对抗与APT攻击趋向自写C2框架" class="headerlink" title="为什么现代EDR对抗与APT攻击趋向自写C2框架"></a>为什么现代EDR对抗与APT攻击趋向自写C2框架</h3><h3 id="1-引言：C2框架在现代攻击中的核心作用"><a href="#1-引言：C2框架在现代攻击中的核心作用" class="headerlink" title="1.引言：C2框架在现代攻击中的核心作用**"></a>1.引言：C2框架在现代攻击中的核心作用**</h3><ul>
+<li><h4 id="C2框架概述："><a href="#C2框架概述：" class="headerlink" title="C2框架概述："></a>C2框架概述：</h4><ul>
+<li>Command and Control（C2）框架是攻击者与目标系统之间进行命令传递和数据回传的核心工具。</li>
+<li>在渗透测试、红队演习以及APT攻击中，C2框架承担着控制远程主机、获取敏感信息等关键任务。</li>
+</ul>
+</li>
+<li><h4 id="为何选择自写C2框架："><a href="#为何选择自写C2框架：" class="headerlink" title="为何选择自写C2框架："></a>为何选择自写C2框架：</h4><ul>
+<li>自写C2框架相比传统的公共框架（如Cobalt Strike、Empire）能提供更多定制性，特别是面对现代EDR防御技术和高级持久性威胁（APT）时，自写C2能提供更强的隐蔽性和灵活性。</li>
+<li>在如今的环境下,常规的c2已经很难再绕过各种现代edr,这些公共的c2早已在发布不久就被蓝队各种研究烂了,其实很多edr看似很厉害,其实只不过是了解某种c2的规则,说到底就是yara匹配和各种r3的hook和内核的回调检查,一旦新的c2出现或者新的手法出现,短时间内都很难应对,例如去年的pool注入就干倒一堆edr,很多杀软甚至只能用特别流氓的方式去反病毒(这不得不提我们国内某厂商)</li>
+</ul>
+</li>
+</ul>
+<h3 id="2-现代EDR防御机制：为何公共C2不再适用"><a href="#2-现代EDR防御机制：为何公共C2不再适用" class="headerlink" title="2.现代EDR防御机制：为何公共C2不再适用**"></a>2.现代EDR防御机制：为何公共C2不再适用**</h3><ul>
+<li><h4 id="EDR技术的演进："><a href="#EDR技术的演进：" class="headerlink" title="EDR技术的演进："></a>EDR技术的演进：</h4><ul>
+<li>现代的EDR（Endpoint Detection and Response）技术不仅通过基于签名的检测防止已知恶意软件入侵，还利用行为分析、内存扫描、流量监控等高级手段来捕捉潜在的APT攻击。</li>
+<li>EDR能够监控进程行为、系统调用、网络连接等，精准识别并拦截异常行为。</li>
+</ul>
+</li>
+<li><h4 id="EDR对C2通信的识别："><a href="#EDR对C2通信的识别：" class="headerlink" title="EDR对C2通信的识别："></a>EDR对C2通信的识别：</h4><ul>
+<li>许多公共C2框架具有明显的行为模式，如特定的网络流量特征、已知的HTTP请求模式、固定的命令格式等。这些固定的模式很容易被现代EDR通过行为分析识别和拦截。</li>
+<li>举例：Cobalt Strike的默认HTTP协议或Empire的PowerShell命令，这些协议和命令格式的“指纹”极易被现代EDR检测到。</li>
+</ul>
+</li>
+<li><h4 id="对公共C2的反制："><a href="#对公共C2的反制：" class="headerlink" title="对公共C2的反制："></a>对公共C2的反制：</h4><ul>
+<li>随着EDR技术的不断进步，攻击者逐渐意识到公共C2的不足。许多APT组织开始依赖自写的C2框架，以逃避EDR的监控。</li>
+</ul>
+</li>
+</ul>
+<h3 id="3-APT攻击与自写C2框架的必然性"><a href="#3-APT攻击与自写C2框架的必然性" class="headerlink" title="3.APT攻击与自写C2框架的必然性**"></a>3.APT攻击与自写C2框架的必然性**</h3><ul>
+<li><h4 id="APT攻击的特征："><a href="#APT攻击的特征：" class="headerlink" title="APT攻击的特征："></a>APT攻击的特征：</h4><ul>
+<li>APT攻击通常是高度定制化、持续性的，并且攻击者会尽最大努力隐藏自己的行动。</li>
+<li>攻击者通常会避免使用公共的、广为人知的工具，以免被安全团队或EDR解决方案检测到。</li>
+<li>例如，使用Cobalt Strike等公共工具会被识别为恶意行为，而APT组织则倾向于自行开发C2框架，避免使用已有的“指纹”。</li>
+</ul>
+</li>
+<li><h4 id="自写C2的优势："><a href="#自写C2的优势：" class="headerlink" title="自写C2的优势："></a>自写C2的优势：</h4><ul>
+<li>定制化通信协议：自写C2框架可以设计专门的通信协议，避免了公共C2框架中常见的可被识别的协议模式。例如，使用自定义的加密协议，或通过伪装流量为合法流量的方式（如伪装成常见的HTTPS请求）来避开EDR流量分析。</li>
+<li>动态与隐蔽性：自写C2可以动态生成网络通信，频率和模式不固定，避免了固定周期或模式的Beacon通信。通过自定义的数据包格式，可以使通信行为更为多样，难以被EDR检测到。</li>
+<li>避开已知签名与检测规则：EDR通常依赖已知签名和检测规则来拦截攻击，而自写C2框架可以随时修改代码或改变通信机制，减少被黑名单、签名库或流量分析系统发现的风险。</li>
+<li>适应性强：随着EDR技术不断演进，APT组织可以随时调整自写的C2框架，添加新功能、增强隐蔽性，确保持续性攻击能够绕过防御系统。</li>
+</ul>
+</li>
+</ul>
+<h3 id="4-自写C2框架的设计与实现"><a href="#4-自写C2框架的设计与实现" class="headerlink" title="4.自写C2框架的设计与实现**"></a>4.自写C2框架的设计与实现**</h3><ul>
+<li><h4 id="从零开始设计C2框架："><a href="#从零开始设计C2框架：" class="headerlink" title="从零开始设计C2框架："></a>从零开始设计C2框架：</h4><ul>
+<li>自写C2的过程可以根据攻击需求定制，例如选择合适的通信协议（HTTP、DNS、甚至TCP隧道等），保证数据隐蔽传输。</li>
+<li>设计灵活的Beacon模型，可以在不同的目标系统中生效（例如Windows与Linux），并具备多种回连方式。</li>
+</ul>
+</li>
+<li><h4 id="通信加密与隐蔽性："><a href="#通信加密与隐蔽性：" class="headerlink" title="通信加密与隐蔽性："></a>通信加密与隐蔽性：</h4><ul>
+<li>使用端到端加密确保C2通信不会被中途截获和分析。常见的加密技术如AES对称加密、TLS加密等。</li>
+<li>防止C2通信流量被流量分析工具识别，例如使用动态加密密钥或利用DNS隧道技术进行隐蔽通信。</li>
+</ul>
+</li>
+<li><h4 id="反检测技术："><a href="#反检测技术：" class="headerlink" title="反检测技术："></a>反检测技术：</h4><ul>
+<li>反沙箱技术：检测是否在虚拟环境中执行，如果是虚拟环境，则停止执行并删除痕迹。</li>
+<li>反调试技术：采用技术手段检测目标系统是否正在调试过程中，并在检测到调试环境时停止操作。</li>
+</ul>
+</li>
+<li><h4 id="动态模块加载与扩展："><a href="#动态模块加载与扩展：" class="headerlink" title="动态模块加载与扩展："></a>动态模块加载与扩展：</h4><ul>
+<li>支持动态加载模块，使攻击者可以根据目标环境的变化和EDR技术的发展不断调整C2的功能，增加隐蔽性。</li>
+</ul>
+</li>
+</ul>
+<h3 id="5-未来在edr下c2的对抗"><a href="#5-未来在edr下c2的对抗" class="headerlink" title="5.未来在edr下c2的对抗**"></a>5.未来在edr下c2的对抗**</h3><h4 id="5-1流量混淆"><a href="#5-1流量混淆" class="headerlink" title="5.1流量混淆"></a>5.1流量混淆</h4><ul>
+<li><p><strong>目的</strong>：通过修改网络流量的结构，使其难以被EDR系统或流量监控工具检测。流量混淆的关键是改变流量的外观而不改变其实际内容,模仿正常的网络传输,将恶意的数据隐藏再数据包中</p>
+<p><strong>技术手段</strong>：</p>
+<ul>
+<li><strong>TLS&#x2F;SSL加密</strong>：将通信内容通过TLS&#x2F;SSL加密，使得流量内容无法直接被分析。现代EDR工具虽然能够检测到SSL流量，但在缺乏证书解密的情况下，它们只能看到加密的流量模式。通过动态生成自定义的证书和加密协议，可以进一步避免流量特征暴露。</li>
+<li><strong>协议伪装</strong>：通过伪装成合法的HTTPS,DNS,SMB等协议，绕过EDR的流量分析。常见的做法是将恶意数据嵌入到正常的HTTPS请求或DNS查询中，保持数据包大小和频率与正常流量一致，避免流量行为分析引发警报。</li>
+<li><strong>分包技术</strong>：将数据流拆分成多个小数据包，通过不同的路径传输，从而分散流量特征。这样，流量监控工具无法在一个数据包中看到明显的恶意内容。</li>
+<li><strong>数据伪造</strong>:  模拟正常的网络请求,例如&#x2F;api&#x2F;gettime,在网页的数据包中输出大量有关时间的数据,内部参杂一些恶意数据</li>
+</ul>
+</li>
+</ul>
+<h4 id="5-2新型的恶意开发技术-例如pool注入"><a href="#5-2新型的恶意开发技术-例如pool注入" class="headerlink" title="5.2新型的恶意开发技术(例如pool注入)"></a>5.2新型的恶意开发技术(例如pool注入)</h4><p><strong>目的</strong>：通过将恶意代码注入到目标进程的内存中，避免磁盘上的恶意文件被EDR检测。</p>
+<p><strong>技术手段</strong>：</p>
+<ul>
+<li><strong>Pool注入</strong>：利用Windows线程池注入恶意代码。不同于传统的线程注入，Pool注入将恶意代码存放在进程线程池中，能过绕过常见的线程进程检查，且不容易通过标准的反病毒扫描工具发现。</li>
+<li><strong>新的Window函数</strong>: 随着Windows操作系统和API的更新，新的函数和接口不断被引入。攻击者可以滥用这些新函数，因为它们通常不会被传统的防病毒或EDR系统识别为恶意。例如，新的系统调用或API函数可能没有被现有的签名库和行为分析规则覆盖，因此攻击者可以利用这些“新鲜”的接口执行恶意操作，绕过检测。由于这些函数缺乏常见的恶意活动特征，它们通常更难被监控工具标记为可疑行为。</li>
+<li><strong>HOOK和反HOOK</strong>：攻击者可以利用R3（用户模式）和R0（内核模式）的反hook技术，通过恢复或隐藏被Hook的系统调用，避免被EDR或反病毒软件监控。通过在内核层绕过回调检查以及绕过window各种pg等保护，攻击者能够绕过用户模式的安全检测，确保恶意行为不被发现，尤其是绕过基于API Hook的监控和拦截机制。</li>
+</ul>
+<h4 id="5-3滥用win各种技术-例如com-dcom-wmi技术"><a href="#5-3滥用win各种技术-例如com-dcom-wmi技术" class="headerlink" title="5.3滥用win各种技术(例如com,dcom,wmi技术)"></a>5.3滥用win各种技术(例如com,dcom,wmi技术)</h4><p><strong>目的</strong>：利用Windows自带的高级功能和API来执行恶意行为，这些技术通常被合法程序使用，因此较难被EDR系统识别为恶意操作。</p>
+<p><strong>技术手段</strong>：</p>
+<ul>
+<li><strong>COM&#x2F;DCOM</strong>：通过调用Windows的Component Object Model (COM)和分布式组件对象模型（DCOM），可以实现远程执行恶意代码。通过滥用这些通信机制，可以绕过EDR监控，不需要直接创建可执行文件或显式进程，避免被传统安全软件检测。</li>
+<li><strong>WMI（Windows Management Instrumentation）</strong>：WMI是Windows管理工具的一部分，广泛用于监控和管理Windows系统的硬件与软件状态。攻击者可以利用WMI执行远程命令、脚本注入、系统操作等，绕过EDR的监控。由于WMI的正常使用频率较高，EDR很难区分恶意的WMI调用与合法操作。</li>
+</ul>
+<h4 id="5-4内存加载-减少使用磁盘落地的技术"><a href="#5-4内存加载-减少使用磁盘落地的技术" class="headerlink" title="5.4内存加载(减少使用磁盘落地的技术)"></a>5.4内存加载(减少使用磁盘落地的技术)</h4><p><strong>目的</strong>：减少恶意代码写入磁盘，避免被传统的反病毒软件和EDR检测。</p>
+<p><strong>技术手段</strong>：</p>
+<ul>
+<li><strong>内存加载技术</strong>：通过将恶意代码直接加载到内存中运行，而不是写入磁盘。攻击者可以利用Windows的内存映射文件（Memory-Mapped Files）和反射加载（Reflective DLL Injection）技术，动态地将恶意代码注入到正在运行的进程中，避免在磁盘上留下痕迹,例如cs的bof技术,能够做到不留痕迹执行操作,有效的绕过了r3的hook和各种行为检测.</li>
+<li><strong>无文件PowerShell技术</strong>：无文件PowerShell技术是一种很有效的技术,本质是因为能做到在命令行调用各种api,不落地磁盘,通过使用PowerShell脚本直接在内存中执行恶意命令，绕过EDR对文件的监控。PowerShell本身是一个强大的系统管理工具，攻击者通过其执行命令行指令，不容易被传统防病毒软件检测到。</li>
+</ul>
+<h4 id="5-5滥用公共平台混淆"><a href="#5-5滥用公共平台混淆" class="headerlink" title="5.5滥用公共平台混淆"></a>5.5滥用公共平台混淆</h4><h4 id="目的："><a href="#目的：" class="headerlink" title="目的："></a><strong>目的</strong>：</h4><p>通过使用公共平台（如社交媒体、在线文档、笔记平台等）作为C2通信的通道，使得C2的流量全程通过合法的白名单域名进行传输，避免被EDR和网络流量监控工具识别。这样，攻击者能够避免常规的恶意流量分析和封锁，同时增加追踪和检测的难度。</p>
+<h4 id="技术细节："><a href="#技术细节：" class="headerlink" title="技术细节："></a><strong>技术细节</strong>：</h4><ol>
+<li><strong>使用公共平台作为中转域</strong>：<ul>
+<li>攻击者通过在公共平台上建立与目标的“隐蔽通道”，将恶意命令和数据通过该平台传输。公共平台通常拥有较高的信誉和白名单地位，因此，它们的流量被防火墙、EDR和其他安全设备放行。</li>
+<li>常见的平台包括：<ul>
+<li><strong>Twitter</strong>：攻击者可以利用Twitter的API，发送隐藏的恶意命令或文件指令到Twitter的特定账户或私信中。Beacon可以定时检查Twitter，读取这些信息并执行相应命令。</li>
+<li><strong>语雀&#x2F;Notion&#x2F;Google Docs</strong>：通过创建公开或私人文档，攻击者可以将恶意命令嵌入到文档中。Beacon可以定期扫描这些文档，读取并解析指令。</li>
+<li><strong>Slack&#x2F;Discord&#x2F;Telegram</strong>：这些即时通讯工具和平台也可以作为C2的通道。通过使用API，攻击者可以在特定的频道或私聊中发送恶意指令，Beacon在后台监控并执行命令。</li>
+<li><strong>GitHub&#x2F;GitLab</strong>：使用公共代码仓库来作为C2通道。攻击者可以通过在代码仓库中提交恶意更新，Beacon定时拉取仓库中的更新并执行命令。</li>
+</ul>
+</li>
+</ul>
+</li>
+<li><strong>如何实现</strong>：<ul>
+<li><strong>数据嵌入与编码</strong>：为了避免被平台的内容审查机制（例如推特的垃圾信息检测）发现，攻击者可以使用编码技巧（如Base64、XOR等）将C2命令隐藏在普通文本中。这些命令看起来是普通的字符或信息，但实际上是经过编码的恶意指令。</li>
+<li><strong>定期轮询与轮换</strong>：Beacon定期（如每隔几分钟）访问公共平台，轮询和解析嵌入的恶意命令。为了避免行为模式被EDR检测，攻击者会在发送指令时使用随机时间间隔、随机化的数据格式等。</li>
+<li><strong>利用平台API与Webhook</strong>：例如，Twitter和Slack等平台提供了强大的API接口，攻击者可以使用这些API向特定账户发送信息或监听消息。Beacon可以通过API与这些平台交互，接收并执行指令。</li>
+</ul>
+</li>
+<li><strong>数据传输与命令交互</strong>：<ul>
+<li><strong>Beacon读取数据</strong>：Beacon与目标机器保持长时间的反向连接，通过定期读取公共平台上发布的消息来获取C2命令。由于这些消息发布在公共平台上，因此它们不容易被传统的防火墙或网络监控工具捕捉。</li>
+<li><strong>命令执行与反馈</strong>：当Beacon从公共平台读取到恶意命令后，它会在目标系统上执行相应的操作（例如，文件上传、下载、执行命令等）。执行完毕后，Beacon可以将结果（例如日志、文件）再次通过相同的公共平台发送回攻击者，通常以加密形式返回。</li>
+<li><strong>反向回传数据</strong>：除了命令外，Beacon还可以将目标系统的信息（如文件内容、系统状态等）通过平台上传回C2服务器。这种方式使得所有流量都通过平台的“合法通道”进行，避免了检测工具的拦截。</li>
+</ul>
+</li>
+<li><strong>避免检测</strong>：<ul>
+<li><strong>平台白名单</strong>：大部分公共平台（如推特、Google Docs等）都被网络监控工具和防火墙视为“可信”域名，因此它们的流量不会被直接阻止或标记为恶意。EDR和IPS（入侵防御系统）通常不会对这些平台的流量进行深入分析，因此恶意通信得以在不被发现的情况下完成。</li>
+<li><strong>伪装与混淆</strong>：为了进一步隐藏C2流量，攻击者可以使用伪装技术，如将C2命令伪装成正常的社交媒体消息、更新记录、新闻推送等。这样，攻击者能够确保C2流量在合法平台上流通而不被识别。</li>
+</ul>
+</li>
+</ol>
+<h4 id="实例应用："><a href="#实例应用：" class="headerlink" title="实例应用："></a><strong>实例应用</strong>：</h4><ul>
+<li><strong>Twitter C2</strong>：攻击者可以通过Twitter的API在特定的推文中嵌入命令。例如，攻击者在自己的Twitter账户上发布类似于<code>!download &lt;url&gt;</code>的指令，Beacon定期读取该账户的推文内容，如果有新指令，立即执行并反馈结果。</li>
+<li><strong>语雀&#x2F;Notion&#x2F;Google Docs</strong>：在这些平台上，攻击者可以创建共享文档，将C2指令隐藏在文档内容中。Beacon定期访问该文档，解析指令后执行相应的操作。</li>
+<li><strong>Slack C2</strong>：利用Slack API，攻击者在特定的频道或私聊中发送恶意指令。Beacon监听Slack的频道，读取消息并执行命令。</li>
+</ul>
+<h4 id="5-6多轮释放-快捷方式-伪造的exe-msi安装包-内存释放-bat-js各种window可以滥用的方式-不再使用单一exe上线"><a href="#5-6多轮释放-快捷方式-伪造的exe-msi安装包-内存释放-bat-js各种window可以滥用的方式-不再使用单一exe上线" class="headerlink" title="5.6多轮释放(快捷方式,伪造的exe,msi安装包,内存释放,bat,js各种window可以滥用的方式,不再使用单一exe上线)"></a>5.6多轮释放(快捷方式,伪造的exe,msi安装包,内存释放,bat,js各种window可以滥用的方式,不再使用单一exe上线)</h4><p><strong>目的</strong>：避免一次性暴露恶意程序，通过多轮释放机制隐藏恶意活动，并通过多层策略绕过EDR检测。</p>
+<p><strong>技术手段</strong>：</p>
+<ul>
+<li><strong>快捷方式滥用</strong>：通过伪造恶意的快捷方式文件（.lnk），攻击者可以利用系统的快捷方式处理程序来启动恶意代码。apt组织经常使用这种钓鱼技术去诱惑用户.</li>
+<li><strong>伪造的EXE与MSI安装包</strong>：通过伪造常见的EXE或MSI安装包，攻击者可以将恶意代码包装在看似合法的安装程序中。用户常常很难分别是否为恶意样本,很多初轮释放的样本都是合法文件,滥用白加黑手法去加载恶意文件，尤其是当它们利用代码签名或合法软件的特征时。</li>
+<li><strong>内存释放与脚本启动</strong>：将恶意代码通过内存注入或脚本（如BAT、JS）方式释放，避免硬盘上的持久化痕迹。BAT脚本可以加载恶意命令，而JavaScript（JS）可以通过内嵌到网页中执行恶意代码，绕过传统的EDR。</li>
+</ul>
+<h4 id="5-7滥用驱动强杀edr-滥用任意读写-结束进程等危险驱动内核函数"><a href="#5-7滥用驱动强杀edr-滥用任意读写-结束进程等危险驱动内核函数" class="headerlink" title="5.7滥用驱动强杀edr(滥用任意读写,结束进程等危险驱动内核函数)"></a>5.7滥用驱动强杀edr(滥用任意读写,结束进程等危险驱动内核函数)</h4><p><strong>目的</strong>：通过操作驱动程序和内核模式功能，直接干扰EDR的运行，绕过EDR对进程和行为的监控。</p>
+<p><strong>技术手段</strong>：</p>
+<ul>
+<li><strong>恶意驱动程序</strong>：攻击者可以编写恶意驱动程序（Kernel-mode rootkits），通过直接操作内核空间来禁用EDR或通过操控内核函数如<code>ZwTerminateProcess</code>（结束进程）来杀死EDR进程。驱动程序具有高权限，可以绕过用户模式的EDR防护，直接与硬件或内核通信。</li>
+<li><strong>任意读写内存</strong>：通过内核函数直接访问、修改内存内容，可以禁用或破坏EDR的内存检测机制。攻击者利用内核读写操作覆盖EDR的关键内存区域，使其失效或无法检测到恶意行为。</li>
+<li><strong>内核注入</strong>：将恶意代码注入到操作系统的内核中，通过修改内核层的行为，干扰EDR的正常工作。这种方法常见于利用漏洞获取内核权限后实施的攻击。</li>
+</ul>
+<h3 id="6-自实现c2"><a href="#6-自实现c2" class="headerlink" title="6.自实现c2"></a>6.自实现c2</h3><img src="L:\cc_blog\source\_posts\img\ab819d95767a7cc3a9e43e79e4730668.png" alt="ab819d95767a7cc3a9e43e79e4730668" style="zoom:75%;" />
+
+
+
+<p>这是目前实现的功能 因为是给个人使用 所以没有写ui界面,外观也比较简单,对于这种单兵的c2框架,注重武器化开发和规避隐蔽即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line">//基础的功能 使用多会话 而不是像msf这种单会话执行 更符合现代c2框架</span><br><span class="line">sessions                                     - 显示beacon会话</span><br><span class="line">beacon_id command                            - 执行beacon命令</span><br><span class="line">beacon_id kill                               - 杀死当前进程</span><br><span class="line">beacon_id cd path                            - 切换当前路径</span><br><span class="line">cls                                          - 清除控制台</span><br><span class="line">exit                                         - 退出c2控制台</span><br><span class="line"></span><br><span class="line">//进程线程注入模块 用户注入shellcode以及其他功能 例如键盘监听器</span><br><span class="line">beacon_id inject1 process_name               - 使用远程线程注入</span><br><span class="line">beacon_id inject2 process_name               - 使用重启线程注入</span><br><span class="line">beacon_id inject3 process_name               - 使用低级进程注入</span><br><span class="line"></span><br><span class="line">//信息收集模块 使用底层的winapi实现 不依赖在命令行 其本质是调用system32下的exe 容易被行为监控</span><br><span class="line">beacon_id sysinfo                            - 获取系统信息</span><br><span class="line">beacon_id screen                             - 截图当前屏幕</span><br><span class="line">beacon_id ps                                 - 列出所有进程</span><br><span class="line"></span><br><span class="line">//规避杀软 使用内存技术 做到内存加密 以及使用内存加载技术执行命令 防止落地磁盘和r3hook</span><br><span class="line">beacon_id sleepmask down/up                  - 关闭/开启sleepmask(默认开启)</span><br><span class="line">beacon_id run flle_name                      - 以内存加载的形式执行bof</span><br><span class="line"></span><br><span class="line">//使用底层winapi函数实现上下传 全程使用加密 不依赖curl wget等危险行为</span><br><span class="line">beacon_id upload flle_name save_path         - 上传文件到指定路径(保存路径为空默认为当前)</span><br><span class="line">beacon_id download flle_name save_path       - 下载指定路径文件(保存路径为空默认为当前)</span><br><span class="line"></span><br><span class="line">//横向的手法 主要用于dump lsass 但mimikatz的痕迹过于明显 且需要做静态免杀</span><br><span class="line">beacon_id dump process                       - 转储指定进程内存</span><br><span class="line"></span><br><span class="line"></span><br><span class="line"></span><br></pre></td></tr></table></figure>
+
+
+
+<p>未来可能打算实现的功能 没啥时间了估计可能不写了 武器化开发的重要性远小于规避 c2的注重规避即可</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">set beacon_id protocols ip port              - 设置beacon代理</span><br><span class="line">beacon_id autorun file_name                  - 设置开机自启动</span><br><span class="line">beacon_id regedit                            - 设置注册表内容</span><br><span class="line">beacon_id schtask                            - 设置计划任务</span><br><span class="line">beacon_id sclipboard                         - 获取剪切板内容</span><br><span class="line">beacon_id wifi_pass                          - 获取wifi历史密码</span><br><span class="line">beacon_id brower_pass                        - 获取浏览器保存密码</span><br><span class="line">beacon_id getsys                             - 尝试提升权限</span><br><span class="line">beacon_id scan host                          - 对网段内进行主机扫描</span><br><span class="line">beacon_id unzip file_name save_path          - 解压指定路径文件(保存路径为空默认为当前)</span><br><span class="line">beacon_id zip file_name save_path            - 压缩指定路径文件(保存路径为空默认为当前)</span><br><span class="line">beacon_id del file_name save_path            - 删除指定路径文件(保存路径为空默认为当前)</span><br><span class="line">beacon_id rdp down/up                        - 开启目标机器rdp服务</span><br><span class="line">beacon_id wmi                                - 使用wmi技术</span><br><span class="line">beacon_id perun file_name save_path          - 以内存加载的形式执行exe</span><br><span class="line">beacon_id hide file_name save_path           - 设置文件隐藏</span><br><span class="line">beacon_id event                              - 操作window事件</span><br></pre></td></tr></table></figure>
+
+
+
+<p><strong>内存加载技术   用于规避edr的检测 原先执行命令时通过创建进程执行 容易被edr检测 bof的形式是在beacon中执行 不会创建进程 本身体积小</strong></p>
+<img src="L:\cc_blog\source\_posts\img\9f699b3ffcc01fdb2f77f4f783015c5e.png" alt="9f699b3ffcc01fdb2f77f4f783015c5e" style="zoom:75%;" />
+
+<p><strong>文件上传和下载的流量隐藏</strong></p>
+<img src="L:\cc_blog\source\_posts\img\de7e021e9c6fb1418985e3fc508d55a3.png" alt="de7e021e9c6fb1418985e3fc508d55a3" style="zoom:75%;" />
+
+
+
+<p><strong>自实现的命令 减少被行为检测的风险</strong></p>
+<img src="L:\cc_blog\source\_posts\img\ecab6d7b41bd6c039928199fb0ad8c50.png" alt="ecab6d7b41bd6c039928199fb0ad8c50" style="zoom:75%;" /></article><div class="post-copyright"><div class="post-copyright__author"><span class="post-copyright-meta"><i class="fas fa-circle-user fa-fw"></i>文章作者: </span><span class="post-copyright-info"><a href="http://example.com">cc</a></span></div><div class="post-copyright__type"><span class="post-copyright-meta"><i class="fas fa-square-arrow-up-right fa-fw"></i>文章链接: </span><span class="post-copyright-info"><a href="http://example.com/2025/09/25/c2%E9%87%8D%E6%9E%84/">http://example.com/2025/09/25/c2%E9%87%8D%E6%9E%84/</a></span></div><div class="post-copyright__notice"><span class="post-copyright-meta"><i class="fas fa-circle-exclamation fa-fw"></i>版权声明: </span><span class="post-copyright-info">本博客所有文章除特别声明外，均采用 <a href="https://creativecommons.org/licenses/by-nc-sa/4.0/" target="_blank">CC BY-NC-SA 4.0</a> 许可协议。转载请注明来源 <a href="http://example.com" target="_blank">Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher,APT Threat Hunting Expert</a>！</span></div></div><div class="tag_share"><div class="post-share"><div class="social-share" data-image="/img/123.png" data-sites="facebook,twitter,wechat,weibo,qq"></div><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/css/share.min.css" media="print" onload="this.media='all'"><script src="https://cdn.jsdelivr.net/npm/butterfly-extsrc/sharejs/dist/js/social-share.min.js" defer></script></div></div><nav class="pagination-post" id="pagination"><a class="pagination-related full-width" href="/2025/09/16/c%E7%BB%AD/" title="c2的重构"><div class="cover" style="background: var(--default-bg-color)"></div><div class="info text-right"><div class="info-1"><div class="info-item-1">下一篇</div><div class="info-item-2">c2的重构</div></div><div class="info-2"><div class="info-item-1">c2的重构关于前面的c2的结构 由于不熟练go的开发 在开发bof的时候出现的问题 如果要解决就必须重构整个项目 整个项目简直就是一堆屎山  深思熟虑下觉得再次尝试 这次server和beacon都采用c开发 beacon端的开发简直不要太舒服 本身就相比其他语言native 问题的关键就是服务端的c十分难受 首先就是库的缺少 像是http请求库和加密库 最重要的的是多线程开发 c的多线程堪称噩梦级别的 这次开发不再按照c2的结构开发 而是武器化开发  功能: 执行命令——已完成bof执行——已完成上传文件下载文件dump进程——已完成内存混淆——已完成睡眠管理——已完成进程注入——已完成切换目录——已完成添加用户——已完成自启动计划任务信息收集截图屏幕——已完成进程结束——已完成beacon加壳load和getpro自写通信技术数据加密反沙箱——已完成进程列举 </div></div></div></a></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/123.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">cc</div><div class="author-info-description">redteam</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">8</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/chao112122"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">feel free to contact me at my Google email: jiah3540@gmail.com</div></div><div class="sticky_layout"><div class="card-widget" id="card-toc"><div class="item-headline"><i class="fas fa-stream"></i><span>目录</span><span class="toc-percentage"></span></div><div class="toc-content"><ol class="toc"><li class="toc-item toc-level-1"><a class="toc-link" href="#EDR%E5%BC%BA%E5%AF%B9%E6%8A%97%E7%8E%AF%E5%A2%83%E4%B8%8B%E4%B8%8E%E7%8E%B0%E4%BB%A3APT%E7%BB%84%E7%BB%87%E8%B6%8B%E5%8A%BF"><span class="toc-number">1.</span> <span class="toc-text">EDR强对抗环境下与现代APT组织趋势</span></a><ol class="toc-child"><li class="toc-item toc-level-3"><a class="toc-link" href="#%E4%B8%BA%E4%BB%80%E4%B9%88%E7%8E%B0%E4%BB%A3EDR%E5%AF%B9%E6%8A%97%E4%B8%8EAPT%E6%94%BB%E5%87%BB%E8%B6%8B%E5%90%91%E8%87%AA%E5%86%99C2%E6%A1%86%E6%9E%B6"><span class="toc-number">1.0.1.</span> <span class="toc-text">为什么现代EDR对抗与APT攻击趋向自写C2框架</span></a></li><li class="toc-item toc-level-3"><a class="toc-link" href="#1-%E5%BC%95%E8%A8%80%EF%BC%9AC2%E6%A1%86%E6%9E%B6%E5%9C%A8%E7%8E%B0%E4%BB%A3%E6%94%BB%E5%87%BB%E4%B8%AD%E7%9A%84%E6%A0%B8%E5%BF%83%E4%BD%9C%E7%94%A8"><span class="toc-number">1.0.2.</span> <span class="toc-text">1.引言：C2框架在现代攻击中的核心作用**</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#C2%E6%A1%86%E6%9E%B6%E6%A6%82%E8%BF%B0%EF%BC%9A"><span class="toc-number">1.0.2.1.</span> <span class="toc-text">C2框架概述：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%B8%BA%E4%BD%95%E9%80%89%E6%8B%A9%E8%87%AA%E5%86%99C2%E6%A1%86%E6%9E%B6%EF%BC%9A"><span class="toc-number">1.0.2.2.</span> <span class="toc-text">为何选择自写C2框架：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#2-%E7%8E%B0%E4%BB%A3EDR%E9%98%B2%E5%BE%A1%E6%9C%BA%E5%88%B6%EF%BC%9A%E4%B8%BA%E4%BD%95%E5%85%AC%E5%85%B1C2%E4%B8%8D%E5%86%8D%E9%80%82%E7%94%A8"><span class="toc-number">1.0.3.</span> <span class="toc-text">2.现代EDR防御机制：为何公共C2不再适用**</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#EDR%E6%8A%80%E6%9C%AF%E7%9A%84%E6%BC%94%E8%BF%9B%EF%BC%9A"><span class="toc-number">1.0.3.1.</span> <span class="toc-text">EDR技术的演进：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#EDR%E5%AF%B9C2%E9%80%9A%E4%BF%A1%E7%9A%84%E8%AF%86%E5%88%AB%EF%BC%9A"><span class="toc-number">1.0.3.2.</span> <span class="toc-text">EDR对C2通信的识别：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AF%B9%E5%85%AC%E5%85%B1C2%E7%9A%84%E5%8F%8D%E5%88%B6%EF%BC%9A"><span class="toc-number">1.0.3.3.</span> <span class="toc-text">对公共C2的反制：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#3-APT%E6%94%BB%E5%87%BB%E4%B8%8E%E8%87%AA%E5%86%99C2%E6%A1%86%E6%9E%B6%E7%9A%84%E5%BF%85%E7%84%B6%E6%80%A7"><span class="toc-number">1.0.4.</span> <span class="toc-text">3.APT攻击与自写C2框架的必然性**</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#APT%E6%94%BB%E5%87%BB%E7%9A%84%E7%89%B9%E5%BE%81%EF%BC%9A"><span class="toc-number">1.0.4.1.</span> <span class="toc-text">APT攻击的特征：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E8%87%AA%E5%86%99C2%E7%9A%84%E4%BC%98%E5%8A%BF%EF%BC%9A"><span class="toc-number">1.0.4.2.</span> <span class="toc-text">自写C2的优势：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#4-%E8%87%AA%E5%86%99C2%E6%A1%86%E6%9E%B6%E7%9A%84%E8%AE%BE%E8%AE%A1%E4%B8%8E%E5%AE%9E%E7%8E%B0"><span class="toc-number">1.0.5.</span> <span class="toc-text">4.自写C2框架的设计与实现**</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#%E4%BB%8E%E9%9B%B6%E5%BC%80%E5%A7%8B%E8%AE%BE%E8%AE%A1C2%E6%A1%86%E6%9E%B6%EF%BC%9A"><span class="toc-number">1.0.5.1.</span> <span class="toc-text">从零开始设计C2框架：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E9%80%9A%E4%BF%A1%E5%8A%A0%E5%AF%86%E4%B8%8E%E9%9A%90%E8%94%BD%E6%80%A7%EF%BC%9A"><span class="toc-number">1.0.5.2.</span> <span class="toc-text">通信加密与隐蔽性：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8F%8D%E6%A3%80%E6%B5%8B%E6%8A%80%E6%9C%AF%EF%BC%9A"><span class="toc-number">1.0.5.3.</span> <span class="toc-text">反检测技术：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%8A%A8%E6%80%81%E6%A8%A1%E5%9D%97%E5%8A%A0%E8%BD%BD%E4%B8%8E%E6%89%A9%E5%B1%95%EF%BC%9A"><span class="toc-number">1.0.5.4.</span> <span class="toc-text">动态模块加载与扩展：</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#5-%E6%9C%AA%E6%9D%A5%E5%9C%A8edr%E4%B8%8Bc2%E7%9A%84%E5%AF%B9%E6%8A%97"><span class="toc-number">1.0.6.</span> <span class="toc-text">5.未来在edr下c2的对抗**</span></a><ol class="toc-child"><li class="toc-item toc-level-4"><a class="toc-link" href="#5-1%E6%B5%81%E9%87%8F%E6%B7%B7%E6%B7%86"><span class="toc-number">1.0.6.1.</span> <span class="toc-text">5.1流量混淆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-2%E6%96%B0%E5%9E%8B%E7%9A%84%E6%81%B6%E6%84%8F%E5%BC%80%E5%8F%91%E6%8A%80%E6%9C%AF-%E4%BE%8B%E5%A6%82pool%E6%B3%A8%E5%85%A5"><span class="toc-number">1.0.6.2.</span> <span class="toc-text">5.2新型的恶意开发技术(例如pool注入)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-3%E6%BB%A5%E7%94%A8win%E5%90%84%E7%A7%8D%E6%8A%80%E6%9C%AF-%E4%BE%8B%E5%A6%82com-dcom-wmi%E6%8A%80%E6%9C%AF"><span class="toc-number">1.0.6.3.</span> <span class="toc-text">5.3滥用win各种技术(例如com,dcom,wmi技术)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-4%E5%86%85%E5%AD%98%E5%8A%A0%E8%BD%BD-%E5%87%8F%E5%B0%91%E4%BD%BF%E7%94%A8%E7%A3%81%E7%9B%98%E8%90%BD%E5%9C%B0%E7%9A%84%E6%8A%80%E6%9C%AF"><span class="toc-number">1.0.6.4.</span> <span class="toc-text">5.4内存加载(减少使用磁盘落地的技术)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-5%E6%BB%A5%E7%94%A8%E5%85%AC%E5%85%B1%E5%B9%B3%E5%8F%B0%E6%B7%B7%E6%B7%86"><span class="toc-number">1.0.6.5.</span> <span class="toc-text">5.5滥用公共平台混淆</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E7%9B%AE%E7%9A%84%EF%BC%9A"><span class="toc-number">1.0.6.6.</span> <span class="toc-text">目的：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E6%8A%80%E6%9C%AF%E7%BB%86%E8%8A%82%EF%BC%9A"><span class="toc-number">1.0.6.7.</span> <span class="toc-text">技术细节：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#%E5%AE%9E%E4%BE%8B%E5%BA%94%E7%94%A8%EF%BC%9A"><span class="toc-number">1.0.6.8.</span> <span class="toc-text">实例应用：</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-6%E5%A4%9A%E8%BD%AE%E9%87%8A%E6%94%BE-%E5%BF%AB%E6%8D%B7%E6%96%B9%E5%BC%8F-%E4%BC%AA%E9%80%A0%E7%9A%84exe-msi%E5%AE%89%E8%A3%85%E5%8C%85-%E5%86%85%E5%AD%98%E9%87%8A%E6%94%BE-bat-js%E5%90%84%E7%A7%8Dwindow%E5%8F%AF%E4%BB%A5%E6%BB%A5%E7%94%A8%E7%9A%84%E6%96%B9%E5%BC%8F-%E4%B8%8D%E5%86%8D%E4%BD%BF%E7%94%A8%E5%8D%95%E4%B8%80exe%E4%B8%8A%E7%BA%BF"><span class="toc-number">1.0.6.9.</span> <span class="toc-text">5.6多轮释放(快捷方式,伪造的exe,msi安装包,内存释放,bat,js各种window可以滥用的方式,不再使用单一exe上线)</span></a></li><li class="toc-item toc-level-4"><a class="toc-link" href="#5-7%E6%BB%A5%E7%94%A8%E9%A9%B1%E5%8A%A8%E5%BC%BA%E6%9D%80edr-%E6%BB%A5%E7%94%A8%E4%BB%BB%E6%84%8F%E8%AF%BB%E5%86%99-%E7%BB%93%E6%9D%9F%E8%BF%9B%E7%A8%8B%E7%AD%89%E5%8D%B1%E9%99%A9%E9%A9%B1%E5%8A%A8%E5%86%85%E6%A0%B8%E5%87%BD%E6%95%B0"><span class="toc-number">1.0.6.10.</span> <span class="toc-text">5.7滥用驱动强杀edr(滥用任意读写,结束进程等危险驱动内核函数)</span></a></li></ol></li><li class="toc-item toc-level-3"><a class="toc-link" href="#6-%E8%87%AA%E5%AE%9E%E7%8E%B0c2"><span class="toc-number">1.0.7.</span> <span class="toc-text">6.自实现c2</span></a></li></ol></li></ol></li></ol></div></div><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/25/c2%E9%87%8D%E6%9E%84/" title="EDR强对抗环境下与现代APT组织攻击手法">EDR强对抗环境下与现代APT组织攻击手法</a><time datetime="2025-09-24T21:06:47.386Z" title="发表于 2025-09-25 05:06:47">2025-09-25</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/16/c%E7%BB%AD/" title="c2的重构">c2的重构</a><time datetime="2025-09-16T00:30:27.299Z" title="发表于 2025-09-16 08:30:27">2025-09-16</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/02/%E8%8B%B1%E8%AF%AD%E5%AD%A6%E4%B9%A0/" title="英语学习-科学美国人外刊学习">英语学习-科学美国人外刊学习</a><time datetime="2025-09-02T11:05:57.169Z" title="发表于 2025-09-02 19:05:57">2025-09-02</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/01/2025/" title="2025的计划!">2025的计划!</a><time datetime="2025-08-31T18:27:33.989Z" title="发表于 2025-09-01 02:27:33">2025-09-01</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2025/09/01/%E5%AE%89%E5%85%A8%E4%B9%8B%E8%B7%AF/" title="安全之路">安全之路</a><time datetime="2025-08-31T17:41:56.560Z" title="发表于 2025-09-01 01:41:56">2025-09-01</time></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 By cc</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="readmode" type="button" title="阅读模式"><i class="fas fa-book-open"></i></button><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="rightside-config" type="button" title="设置"><i class="fas fa-cog fa-spin"></i></button><button class="close" id="mobile-toc-button" type="button" title="目录"><i class="fas fa-list-ul"></i></button><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
