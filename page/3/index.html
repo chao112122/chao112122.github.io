@@ -1,0 +1,197 @@
+<!DOCTYPE html><html lang="zh-CN" data-theme="light"><head><meta charset="UTF-8"><meta http-equiv="X-UA-Compatible" content="IE=edge"><meta name="viewport" content="width=device-width, initial-scale=1.0,viewport-fit=cover"><title>Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher - Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher</title><meta name="author" content="abc"><meta name="copyright" content="abc"><meta name="format-detection" content="telephone=no"><meta name="theme-color" content="#ffffff"><meta name="description" content="Redteam">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher">
+<meta property="og:url" content="https://chao112122.github.io/page/3/index.html">
+<meta property="og:site_name" content="Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher">
+<meta property="og:description" content="Redteam">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://chao112122.github.io/img/123.png">
+<meta property="article:author" content="abc">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://chao112122.github.io/img/123.png"><script type="application/ld+json"></script><link rel="shortcut icon" href="/img/123.png"><link rel="canonical" href="https://chao112122.github.io/page/3/index.html"><link rel="preconnect" href="//cdn.jsdelivr.net"/><link rel="preconnect" href="//busuanzi.ibruce.info"/><link rel="stylesheet" href="/css/index.css"><link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free/css/all.min.css"><script>
+    (() => {
+      
+    const saveToLocal = {
+      set: (key, value, ttl) => {
+        if (!ttl) return
+        const expiry = Date.now() + ttl * 86400000
+        localStorage.setItem(key, JSON.stringify({ value, expiry }))
+      },
+      get: key => {
+        const itemStr = localStorage.getItem(key)
+        if (!itemStr) return undefined
+        const { value, expiry } = JSON.parse(itemStr)
+        if (Date.now() > expiry) {
+          localStorage.removeItem(key)
+          return undefined
+        }
+        return value
+      }
+    }
+
+    window.btf = {
+      saveToLocal,
+      getScript: (url, attr = {}) => new Promise((resolve, reject) => {
+        const script = document.createElement('script')
+        script.src = url
+        script.async = true
+        Object.entries(attr).forEach(([key, val]) => script.setAttribute(key, val))
+        script.onload = script.onreadystatechange = () => {
+          if (!script.readyState || /loaded|complete/.test(script.readyState)) resolve()
+        }
+        script.onerror = reject
+        document.head.appendChild(script)
+      }),
+      getCSS: (url, id) => new Promise((resolve, reject) => {
+        const link = document.createElement('link')
+        link.rel = 'stylesheet'
+        link.href = url
+        if (id) link.id = id
+        link.onload = link.onreadystatechange = () => {
+          if (!link.readyState || /loaded|complete/.test(link.readyState)) resolve()
+        }
+        link.onerror = reject
+        document.head.appendChild(link)
+      }),
+      addGlobalFn: (key, fn, name = false, parent = window) => {
+        if (!false && key.startsWith('pjax')) return
+        const globalFn = parent.globalFn || {}
+        globalFn[key] = globalFn[key] || {}
+        globalFn[key][name || Object.keys(globalFn[key]).length] = fn
+        parent.globalFn = globalFn
+      }
+    }
+  
+      
+      
+      const asideStatus = saveToLocal.get('aside-status')
+      if (asideStatus !== undefined) {
+        document.documentElement.classList.toggle('hide-aside', asideStatus === 'hide')
+      }
+    
+      
+    const detectApple = () => {
+      if (/iPad|iPhone|iPod|Macintosh/.test(navigator.userAgent)) {
+        document.documentElement.classList.add('apple')
+      }
+    }
+    detectApple()
+  
+    })()
+  </script><script>const GLOBAL_CONFIG = {
+  root: '/',
+  algolia: undefined,
+  localSearch: undefined,
+  translate: undefined,
+  highlight: {"plugin":"highlight.js","highlightCopy":true,"highlightLang":true,"highlightHeightLimit":false,"highlightFullpage":false,"highlightMacStyle":false},
+  copy: {
+    success: '复制成功',
+    error: '复制失败',
+    noSupport: '浏览器不支持'
+  },
+  relativeDate: {
+    homepage: false,
+    post: false
+  },
+  runtime: '',
+  dateSuffix: {
+    just: '刚刚',
+    min: '分钟前',
+    hour: '小时前',
+    day: '天前',
+    month: '个月前'
+  },
+  copyright: undefined,
+  lightbox: 'null',
+  Snackbar: undefined,
+  infinitegrid: {
+    js: 'https://cdn.jsdelivr.net/npm/@egjs/infinitegrid/dist/infinitegrid.min.js',
+    buttonText: '加载更多'
+  },
+  isPhotoFigcaption: false,
+  islazyloadPlugin: false,
+  isAnchor: false,
+  percent: {
+    toc: true,
+    rightside: false,
+  },
+  autoDarkmode: false
+}</script><script id="config-diff">var GLOBAL_CONFIG_SITE = {
+  title: 'Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher',
+  isHighlightShrink: false,
+  isToc: false,
+  pageType: 'home'
+}</script><meta name="generator" content="Hexo 7.3.0"></head><body><div id="sidebar"><div id="menu-mask"></div><div id="sidebar-menus"><div class="avatar-img text-center"><img src="/img/123.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="site-data text-center"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div></div></div><div class="page" id="body-wrap"><header class="full_page" id="page-header"><nav id="nav"><span id="blog-info"><a class="nav-site-title" href="/"><span class="site-name">Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher</span></a></span><div id="menus"><div class="menus_items"><div class="menus_item"><a class="site-page" href="/"><i class="fa-fw fas fa-home"></i><span> home</span></a></div><div class="menus_item"><a class="site-page" href="/archives/"><i class="fa-fw fas fa-archive"></i><span> archives</span></a></div><div class="menus_item"><a class="site-page" href="/about/"><i class="fa-fw fas fa-heart"></i><span> about</span></a></div></div><div id="toggle-menu"><span class="site-page"><i class="fas fa-bars fa-fw"></i></span></div></div></nav><div id="site-info"><h1 id="site-title">Red Team, Malware Development, Code Auditing, Focused on Cybersecurity,C2 Developer,Security Researcher</h1></div><div id="scroll-down"><i class="fas fa-angle-down scroll-down-effects"></i></div></header><main class="layout" id="content-inner"><div class="recent-posts nc" id="recent-posts"><div class="recent-post-items"><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/01/2025/" title="2025的计划!">2025的计划!</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-31T18:27:33.989Z" title="发表于 2025-09-01 02:27:33">2025-09-01</time></span></div><div class="content">2025的计划!感慨:今天已经是9.1 准备开学 最后的半学期 转眼2026即将到来 感慨学安全这两年 无数个白天在图书馆消耗脑细胞 无数个夜晚在寝室debug 如今学生身份即将消失 这次的实习也让我知道了 要更加珍惜学生生涯 原本大学的这几年的安排95%都给了学习 5%打打go篮球乒乓娱乐一下? 目前几乎安全的领域都过了一遍 水平也算是勉强够实习水平(maybe 大佬太多了) 本来打算最后学期疯狂卷点成绩 写个项目 比如手里写了一半的c2 或者是刷几个稍微有点质量的漏洞? 为后面实习投简历做做保障 想想还是算了 趁着接下来的半年 好好享受一下最后的学生生活 自从高中后  性格变得越来越宅 几乎不出门了 有时候连我自己都震惊 不过这次实习 几乎是把全深圳都走完了 还不错 有所进展 可惜广州没有深圳那么好的美景 大学最遗憾的就是 没有找到志同道合的人 高中的时候虽然是烂高中 那时候喜欢数学 也有不少人和我讨论数学 这对我是一种享受 看着别人身边都有伴友 也不禁后悔没有去到一个好大学 那样子我会有更好的未来 未来发展:曾经很想成为一名单兵apt 精通所有领域 成为一名合格的红队 事实...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/01/%E5%AE%89%E5%85%A8%E4%B9%8B%E8%B7%AF/" title="安全之路">安全之路</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-31T17:41:56.560Z" title="发表于 2025-09-01 01:41:56">2025-09-01</time></span></div><div class="content">安全之路在上大学前没用过电脑 对电脑一窍不通 连开机都不会 鬼知道我这一年经历了什么 大一国庆的时候才买了人生第一个笔记本 刚到手的时候连开机都踉跄 不过如今已经很熟练  大一上 军训完就开始琢磨我的个人选择 毕竟计算机有很多个方向 大部分能接触最多的就是码代码 我花了半个月去学了html和css 发现这和我想象的计算机不一样 我觉得很无聊 所以开始研究计算机的各个方向 比如 软件开发 网络工程 嵌入式 算法 等 软件开发(纯码代码太无聊了) 网络工程(装网线的 纯xx专业 不要问我为什么) 嵌入式(当时听说要物理好 遂放弃) 算法(一堆刁钻的数学问题 我懒)  我的专业是网络工程 我更喜欢调侃成给别人装网线的 事实上也确定有装网线的 我不喜欢这么专业 大一的课程都是思科华为网络配置什么的 极其无聊 以至于我差点就挂科 是真的无聊 现在还在后悔当时应该趁早转的 因为每当期末都要花时间去学 纯纯浪费我的时间  我极其讨厌算法 其实更多讨厌的是各种刁钻的数学问题 什么时间复杂度 最优算法 看得我脑壳痛 至于为什么当时没选择嵌入式是因为听别人说要对电路什么的了解 我物理极差 遂放弃 最...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/01/c2/" title="c2结构">c2结构</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-31T16:56:50.091Z" title="发表于 2025-09-01 00:56:50">2025-09-01</time></span></div><div class="content">关于c2结构下图为现代c2的框架结构 基本的三端结构 在特殊情况下通过域中转可达到四端 hacker-&gt;cloud-&gt;server-&gt;beacon 现代c2多为多会话设计 例如cs 允许多个人操作一个beacon在不同主机 将beacon的会话存储到一个指定服务器通过登入同一服务器可实现多人协助 打破像msf这种单体c2  下图为我个人开发的c2 仍然是单体的c2   server-&gt;beacon hacker在server保存命令给会话 beacon定期睡眠时间主动轮询检查命令队列  如为普通命令就执行保存结果发送给server端 如为模块功能 例如dump lsass就调用beacon写好的功能模块  下面是c2目前实现的功能 123456789101112131415161718192021[+]输入格式: &lt;beacon_id&gt; &lt;command&gt;[+]命令:  sessions                              - 显示所有beacon  print_api                     ...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/09/01/bof%E5%8A%9F%E8%83%BD/" title="c2开发-bof功能">c2开发-bof功能</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-31T16:32:48.108Z" title="发表于 2025-09-01 00:32:48">2025-09-01</time></span></div><div class="content">关于c2开发研究bof功能开发COFF 文件的结构：文件头（COFF_HEADER）：Machine：目标机器类型（如 AMD64、I386）NumberOfSections：节数量PointerToSymbolTable：符号表偏移NumberOfSymbols：符号数量 节表（COFF_SECTION）：Name：节名（如 .text、.data）SizeOfRawData：节数据大小PointerToRawData：节数据在文件中的偏移PointerToRelocations：重定位表偏移NumberOfRelocations：重定位条目数 符号表（COFF_SYMBOL）：Name：符号名（如 go 函数）Value：符号在节中的偏移SectionNumber：所在节编号 重定位表（COFF_RELOCATION）：VirtualAddress：需要修复的地址SymbolTableIndex：引用的符号索引Type：重定位类型（如绝对地址） COFF 符号名称有两种存储方式： 短名称（8 字节以内）：直接存储在符号表的 Name 字段（char Name[8]）长名称：存...</div></div></div><div class="recent-post-item"><div class="recent-post-info no-cover"><a class="article-title" href="/2025/08/29/c2%E7%A0%94%E7%A9%B6/" title="关于c2开发研究">关于c2开发研究</a><div class="article-meta-wrap"><span class="post-meta-date"><i class="far fa-calendar-alt"></i><span class="article-meta-label">发表于</span><time datetime="2025-08-29T12:58:25.929Z" title="发表于 2025-08-29 20:58:25">2025-08-29</time></span></div><div class="content">关于c2开发研究c2功能开发1.内存混淆 防止内存扫描 采用rop和定时器去执行 可以做到内存混淆 混淆的区域任意 目前只加密节区 从text到roloc段 一般roloc是最后一个段2.键盘监听器 注册事件监听当键盘按下 用setwindowhook函数hook 自写函数解析出按下记录 目前与内存混淆有冲突还未解决 因为 内存混淆一直在不断混淆 会打乱监听器代码???maybe (可以 但是有bug 似乎和内存混淆冲突 可能考虑注入到系统进程 但是操作危险)3.shellcode注入模块 首先考虑shellcode注入 如果要更sec一点 后续可以用syscall调用 目前存在问题 注入进程后进程容易奔溃? 以及网络通信似乎无法持久化 不过我看其他项目的c2并不是创建进程而是直接调用 这个似乎也与我的内存混淆冲突 不知道cs是怎么解决的4.剪贴板窃取 这个算是一个比较简单的模块 实现一半 bug太多 也不好用 长期窃取十分耗资源5.etw bypass 使用etw的系列函数不断给etw大量无用etw日志6.高级反沙箱 不采用传统的抗沙箱手法 例如使用user和kernel中间的...</div></div></div></div><nav id="pagination"><div class="pagination"><a class="extend prev" rel="prev" href="/page/2/#content-inner"><i class="fas fa-chevron-left fa-fw"></i></a><a class="page-number" href="/">1</a><a class="page-number" href="/page/2/#content-inner">2</a><span class="page-number current">3</span></div></nav></div><div class="aside-content" id="aside-content"><div class="card-widget card-info text-center"><div class="avatar-img"><img src="/img/123.png" onerror="this.onerror=null;this.src='/img/friend_404.gif'" alt="avatar"/></div><div class="author-info-name">abc</div><div class="author-info-description">Redteam</div><div class="site-data"><a href="/archives/"><div class="headline">文章</div><div class="length-num">25</div></a><a href="/tags/"><div class="headline">标签</div><div class="length-num">0</div></a><a href="/categories/"><div class="headline">分类</div><div class="length-num">0</div></a></div><a id="card-info-btn" target="_blank" rel="noopener" href="https://github.com/chao112122"><i class="fab fa-github"></i><span>Follow Me</span></a></div><div class="card-widget card-announcement"><div class="item-headline"><i class="fas fa-bullhorn fa-shake"></i><span>公告</span></div><div class="announcement_content">feel free to contact me at my Google email: jiah3540@gmail.com</div></div><div class="sticky_layout"><div class="card-widget card-recent-post"><div class="item-headline"><i class="fas fa-history"></i><span>最新文章</span></div><div class="aside-list"><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/21/future/" title="关于人工智能对网安的影响以及我个人的看法">关于人工智能对网安的影响以及我个人的看法</a><time datetime="2026-02-21T08:38:38.695Z" title="发表于 2026-02-21 16:38:38">2026-02-21</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/19/process/" title="无标题">无标题</a><time datetime="2026-02-18T16:52:36.697Z" title="发表于 2026-02-19 00:52:36">2026-02-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/19/inject/" title="无标题">无标题</a><time datetime="2026-02-18T16:31:59.488Z" title="发表于 2026-02-19 00:31:59">2026-02-19</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/08/llm/" title="无标题">无标题</a><time datetime="2026-02-08T14:36:07.016Z" title="发表于 2026-02-08 22:36:07">2026-02-08</time></div></div><div class="aside-list-item no-cover"><div class="content"><a class="title" href="/2026/02/07/debug/" title="无标题">无标题</a><time datetime="2026-02-07T05:19:30.863Z" title="发表于 2026-02-07 13:19:30">2026-02-07</time></div></div></div></div><div class="card-widget card-archives">
+    <div class="item-headline">
+      <i class="fas fa-archive"></i>
+      <span>归档</span>
+      
+    </div>
+  
+    <ul class="card-archive-list">
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/02/">
+            <span class="card-archive-list-date">
+              二月 2026
+            </span>
+            <span class="card-archive-list-count">5</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2026/01/">
+            <span class="card-archive-list-date">
+              一月 2026
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/12/">
+            <span class="card-archive-list-date">
+              十二月 2025
+            </span>
+            <span class="card-archive-list-count">3</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/11/">
+            <span class="card-archive-list-date">
+              十一月 2025
+            </span>
+            <span class="card-archive-list-count">2</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/10/">
+            <span class="card-archive-list-date">
+              十月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/09/">
+            <span class="card-archive-list-date">
+              九月 2025
+            </span>
+            <span class="card-archive-list-count">11</span>
+          </a>
+        </li>
+      
+        <li class="card-archive-list-item">
+          <a class="card-archive-list-link" href="/archives/2025/08/">
+            <span class="card-archive-list-date">
+              八月 2025
+            </span>
+            <span class="card-archive-list-count">1</span>
+          </a>
+        </li>
+      
+    </ul>
+  </div><div class="card-widget card-webinfo"><div class="item-headline"><i class="fas fa-chart-line"></i><span>网站信息</span></div><div class="webinfo"><div class="webinfo-item"><div class="item-name">文章数目 :</div><div class="item-count">25</div></div><div class="webinfo-item"><div class="item-name">本站访客数 :</div><div class="item-count" id="busuanzi_value_site_uv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">本站总浏览量 :</div><div class="item-count" id="busuanzi_value_site_pv"><i class="fa-solid fa-spinner fa-spin"></i></div></div><div class="webinfo-item"><div class="item-name">最后更新时间 :</div><div class="item-count" id="last-push-date" data-lastPushDate="2026-02-21T08:48:37.582Z"><i class="fa-solid fa-spinner fa-spin"></i></div></div></div></div></div></div></main><footer id="footer"><div class="footer-other"><div class="footer-copyright"><span class="copyright">&copy;&nbsp;2025 - 2026 By abc</span><span class="framework-info"><span>框架 </span><a target="_blank" rel="noopener" href="https://hexo.io">Hexo 7.3.0</a><span class="footer-separator">|</span><span>主题 </span><a target="_blank" rel="noopener" href="https://github.com/jerryc127/hexo-theme-butterfly">Butterfly 5.4.3</a></span></div></div></footer></div><div id="rightside"><div id="rightside-config-hide"><button id="hide-aside-btn" type="button" title="单栏和双栏切换"><i class="fas fa-arrows-alt-h"></i></button></div><div id="rightside-config-show"><button id="go-up" type="button" title="回到顶部"><span class="scroll-percent"></span><i class="fas fa-arrow-up"></i></button></div></div><div><script src="/js/utils.js"></script><script src="/js/main.js"></script><div class="js-pjax"></div><script async data-pjax src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js"></script></div></body></html>
